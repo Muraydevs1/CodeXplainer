@@ -15,7 +15,7 @@ const CodeXplainForm = () => {
                  <option value="Python">Python</option>
                  <option value="Golang">Golang</option>
                  <option value="Rust">Rust</option>
-                 <option value="Php">Php</option>
+                 <option value="Php">PhP</option>
                  <option value="Rugby">Rugby</option>
             </select>
             <label className='block mb-2 font-semibold'>Your Code:</label>
