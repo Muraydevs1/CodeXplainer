@@ -22,13 +22,13 @@ app.use(limiter);
 app.use(express.json({limit: "10mb"}))
 
 const API_KEY = process.env.NEBIUS_API_KEY
-const client = OpenAI({
+const client = new OpenAI({
     baseURL: 'https://api.tokenfactory.nebius.com/v1/',
     apiKey: API_KEY,
 });
 
 
-app.post("/api/code-explainer", async(req,res)=>{
+app.post("/api/explain-code", async(req,res)=>{
        try {
          const {code, language} = req.body; 
          if (!code){
@@ -61,6 +61,7 @@ app.post("/api/code-explainer", async(req,res)=>{
 })
 
 const PORT = process.env.PORT || 3002;
+
 app.listen(PORT, ()=>{
-    console.log(`API server is listening on https://localhost${PORT}`); 
+    console.log(`API server is listening on https://localhost:${PORT}`); 
 })
