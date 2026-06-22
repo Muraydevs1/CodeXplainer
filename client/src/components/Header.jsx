@@ -1,5 +1,3 @@
-import React from 'react'
-
 const Header = () => {
   return (
     <header className='flex justify-between items-center w-full max-w-4xl mb-6'>

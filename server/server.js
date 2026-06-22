@@ -9,7 +9,7 @@ import OpenAI from "openai";
 const app = express();
 app.use(helmet());
 app.use(cors({
-    origin:process.env.FRONTEND_URL || "https://localhost:3000",
+    origin: [process.env.FRONTEND_URL || "https://localhost:3000", "http://localhost:5173"],
     credentials: true,
 }))
 
@@ -48,12 +48,12 @@ app.post("/api/explain-code", async(req,res)=>{
             max_tokens: 800,
          })
 
-         const explaination = response?.choices[0]?.message?.content;
-         if(!explaination){
-            return res.status(500).json({error:"Server Error", details: error.message})
+         const explanation = response?.choices[0]?.message?.content;
+         if(!explanation){
+            return res.status(500).json({error:"Server Error"})
          }
 
-         res.json({explaination, language:language || "unknown"})
+         res.json({explanation, language:language || "unknown"})
        } catch (error) {
         console.error("Code Explainer API Error:", error)
         res.status(500).json({error:"Server Error:", details: error.message})

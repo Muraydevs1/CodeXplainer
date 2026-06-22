@@ -1,4 +1,3 @@
-import React from 'react'
 import { useActionState } from 'react'
 import { explain } from '../../actions'
 import Error from '../Error'
@@ -21,11 +20,11 @@ const CodeXplainForm = () => {
             </select>
             <label className='block mb-2 font-semibold'>Your Code:</label>
             <textarea name="code" placeholder="Paste Your Code..." className='border rounded-lg w-full p-3 font-mono text-sm bg-transparent min-h-[150px]'></textarea>
-            <button type='submit' disabled={isPending} className='mt-4 px-6 rounded-lg bg-blue-600 text-white font-semibold hover:bg-blue-700 hover:cursor-pointer transition disabled: opacity-50'>
+            <button type='submit' disabled={isPending} className='mt-4 px-6 rounded-lg bg-blue-600 text-white font-semibold hover:bg-blue-700 hover:cursor-pointer transition disabled:opacity-50'>
               {isPending? "Explaining":"Explain Code"}</button>
         </form>
         {
-          isPending? (<p className='bg-gray-300 my-3 w-64 p-2 rounded-sm'>Thinking...</p>):formState?.success?(<CodeExplanation explanation={formState?.data.explanation}/>): (
+          isPending? (<p className='bg-gray-300 my-3 w-64 p-2 rounded-sm'>Thinking...</p>):formState?.success?(<CodeExplanation explanation={formState?.data?.explanation || formState?.data?.explaination}/>): (
             formState?.success === false && (
               <Error error={formState?.error}/>
             ))}

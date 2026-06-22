@@ -1,10 +1,13 @@
-import React from 'react'
+import Markdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 
-const CodeExplanation = ({explanation}) => {
+const CodeExplanation = ({ explanation }) => {
   return (
     <div className='w-full max-w-4xl mt-6 bg-gray-50 p-6 rounded-2xl shadow-lg'>
       <h2 className='text-xl font-semibold mb-2'>Explanation:</h2>
-      <p className='font-black'>{explanation}</p>
+      <div className='font-black'>
+        <Markdown remarkPlugins={[remarkGfm]}>{explanation}</Markdown>
+      </div>
     </div>
   )
 }

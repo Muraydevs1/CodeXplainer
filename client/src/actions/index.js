@@ -1,4 +1,3 @@
-"use server"
 export async function explain(prevState, formData) {
     const code = formData.get("code")
     const language = formData.get("language")
